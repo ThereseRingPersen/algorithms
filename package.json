@@ -6,14 +6,12 @@
   "author": "Therese Persen <therese.persen@me.com>",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.10.4",
-    "babel-jest": "^26.1.0",
     "jest": "^26.1.0"
   }
 }
