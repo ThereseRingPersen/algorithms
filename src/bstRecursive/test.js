@@ -15,7 +15,7 @@ describe("Node", () => {
   });
 });
 
-describe("Tree insert and remove", () => {
+describe("Tree insert", () => {
   test("starts empty", () => {
     const tree = new Tree();
     expect(tree.root).toEqual(null);
