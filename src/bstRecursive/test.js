@@ -15,7 +15,7 @@ describe("Node", () => {
   });
 });
 
-describe("Tree", () => {
+describe("Tree insert and remove", () => {
   test("starts empty", () => {
     const tree = new Tree();
     expect(tree.root).toEqual(null);
@@ -24,6 +24,13 @@ describe("Tree", () => {
     const tree = new Tree();
     tree.insert("a");
     expect(tree.root.data).toEqual("a");
+  });
+});
+
+describe("Tree remove", () => {
+  test("starts empty", () => {
+    const tree = new Tree();
+    expect(tree.root).toEqual(null);
   });
   test("Can remove a node with two children from a tree", () => {
     const tree = new Tree();
@@ -69,3 +76,58 @@ describe("Tree", () => {
     expect(tree.root.left.data).toEqual(20);
   });
 });
+
+describe("Tree traveral", () => {
+  beforeEach(() => {
+    jest.spyOn(console, "log");
+  });
+
+  afterEach(() => {
+    console.log.mockRestore();
+  });
+  test("Inorder traversal", () => {
+    const tree = buildTree();
+    tree.inorder(tree.root);
+    expect(console.log.mock.calls[0][0]).toEqual(20);
+    expect(console.log.mock.calls[1][0]).toEqual(30);
+    expect(console.log.mock.calls[2][0]).toEqual(35);
+    expect(console.log.mock.calls[3][0]).toEqual(40);
+    expect(console.log.mock.calls[4][0]).toEqual(50);
+    expect(console.log.mock.calls[5][0]).toEqual(60);
+    expect(console.log.mock.calls[6][0]).toEqual(70);
+  });
+  test("Preorder traversal", () => {
+    const tree = buildTree();
+    tree.preorder(tree.root);
+    expect(console.log.mock.calls[0][0]).toEqual(40);
+    expect(console.log.mock.calls[1][0]).toEqual(30);
+    expect(console.log.mock.calls[2][0]).toEqual(20);
+    expect(console.log.mock.calls[3][0]).toEqual(35);
+    expect(console.log.mock.calls[4][0]).toEqual(60);
+    expect(console.log.mock.calls[5][0]).toEqual(50);
+    expect(console.log.mock.calls[6][0]).toEqual(70);
+  });
+  test("Postorder traversal", () => {
+    const tree = buildTree();
+    tree.postorder(tree.root);
+    expect(console.log.mock.calls[0][0]).toEqual(20);
+    expect(console.log.mock.calls[1][0]).toEqual(35);
+    expect(console.log.mock.calls[2][0]).toEqual(30);
+    expect(console.log.mock.calls[3][0]).toEqual(50);
+    expect(console.log.mock.calls[4][0]).toEqual(70);
+    expect(console.log.mock.calls[5][0]).toEqual(60);
+    expect(console.log.mock.calls[6][0]).toEqual(40);
+  });
+});
+
+function buildTree() {
+  const tree = new Tree();
+  tree.insert(40);
+  tree.insert(30);
+  tree.insert(60);
+  tree.insert(50);
+  tree.insert(70);
+  tree.insert(20);
+  tree.insert(35);
+  return tree;
+}
