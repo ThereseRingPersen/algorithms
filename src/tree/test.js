@@ -38,7 +38,7 @@ describe("Node", () => {
 });
 
 describe("Tree", () => {
-  test("Traverse Level first", () => {
+  test("Traverse Breadth first", () => {
     const numbers = [];
     const tree = new Tree();
     tree.root = new Node(1);
@@ -49,7 +49,23 @@ describe("Tree", () => {
     tree.root.children[0].add(6);
     tree.root.children[1].add(7);
     tree.root.children[2].add(8);
-    tree.traverseLevelFirst((node) => numbers.push(node.data));
+    tree.traverseBreadthFirst((node) => numbers.push(node.data));
+
+    expect(numbers).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  test("Traverse Depth first", () => {
+    const numbers = [];
+    const tree = new Tree();
+    tree.root = new Node(1);
+    tree.root.add(2);
+    tree.root.add(5);
+    tree.root.add(7);
+    tree.root.children[0].add(3);
+    tree.root.children[0].add(4);
+    tree.root.children[1].add(6);
+    tree.root.children[2].add(8);
+    tree.traverseDepthFirst((node) => numbers.push(node.data));
 
     expect(numbers).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });

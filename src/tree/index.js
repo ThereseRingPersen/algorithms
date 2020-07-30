@@ -17,11 +17,20 @@ class Tree {
     this.root = null;
   }
 
-  traverseLevelFirst(cb) {
+  traverseBreadthFirst(cb) {
     const nodes = [this.root];
     while (nodes.length) {
       const node = nodes.shift();
       nodes.push(...node.children);
+      cb(node);
+    }
+  }
+
+  traverseDepthFirst(cb) {
+    const nodes = [this.root];
+    while (nodes.length) {
+      const node = nodes.shift();
+      nodes.unshift(...node.children);
       cb(node);
     }
   }
