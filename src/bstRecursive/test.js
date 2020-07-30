@@ -31,7 +31,7 @@ describe("Tree insert", () => {
   });
 });
 
-describe("Tree find", () => { 
+describe("Tree find", () => {
   test("Returns node when it exists.", () => {
     const tree = buildTree();
     const node = tree.find(40);
