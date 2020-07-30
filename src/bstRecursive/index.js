@@ -32,6 +32,7 @@ class Tree {
       }
     }
   }
+
   remove(data) {
     this.root = this.removeNode(this.root, data);
   }
@@ -102,4 +103,5 @@ class Tree {
     }
   }
 }
+
 module.exports = { Node, Tree };
