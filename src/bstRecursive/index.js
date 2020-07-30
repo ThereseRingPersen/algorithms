@@ -67,9 +67,11 @@ class Tree {
       return this.findMinNode(node.left);
     }
   }
+
   find(data) {
     return this.findNode(this.root, data);
   }
+
   findNode(node, data) {
     if (node === null) {
       return null;
@@ -81,6 +83,7 @@ class Tree {
       return this.findNode(node.right, data);
     }
   }
+
   preorder(node) {
     if (node !== null) {
       console.log(node.data);
@@ -88,6 +91,7 @@ class Tree {
       this.preorder(node.right);
     }
   }
+
   inorder(node) {
     if (node !== null) {
       this.inorder(node.left);
@@ -95,6 +99,7 @@ class Tree {
       this.inorder(node.right);
     }
   }
+  
   postorder(node) {
     if (node !== null) {
       this.postorder(node.left);

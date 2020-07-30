@@ -4,6 +4,7 @@ class Node {
     this.left = null;
     this.right = null;
   }
+
   insert(data) {
     if (data < this.data && this.left) {
       this.left.insert(data);
@@ -15,6 +16,7 @@ class Node {
       this.right = new Node(data);
     }
   }
+
   contains(data) {
     if (data === this.data) {
       return this;
