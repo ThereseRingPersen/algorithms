@@ -29,4 +29,5 @@ class Node {
     return null;
   }
 }
+
 module.exports = Node;

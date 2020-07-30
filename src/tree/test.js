@@ -36,3 +36,21 @@ describe("Node", () => {
     expect(n.children.length).toEqual(0);
   });
 });
+
+describe("Tree", () => {
+  test("Traverse Level first", () => {
+    const numbers = [];
+    const tree = new Tree();
+    tree.root = new Node(1);
+    tree.root.add(2);
+    tree.root.add(3);
+    tree.root.add(4);
+    tree.root.children[0].add(5);
+    tree.root.children[0].add(6);
+    tree.root.children[1].add(7);
+    tree.root.children[2].add(8);
+    tree.traverseLevelFirst((node) => numbers.push(node.data));
+
+    expect(numbers).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+});
