@@ -50,6 +50,7 @@ describe("Tree find", () => {
 describe("Tree remove", () => {
   test("starts empty", () => {
     const tree = new Tree();
+    
     expect(tree.root).toEqual(null);
   });
 
@@ -77,7 +78,7 @@ describe("Tree remove", () => {
     tree.insert(40);
     tree.insert(60);
     tree.remove(60);
-    
+
     expect(tree.root.right).toEqual(null);
   });
 
