@@ -77,6 +77,7 @@ describe("Tree remove", () => {
     tree.insert(40);
     tree.insert(60);
     tree.remove(60);
+    
     expect(tree.root.right).toEqual(null);
   });
 
@@ -139,7 +140,7 @@ describe("Tree traveral", () => {
   test("Postorder traversal", () => {
     const tree = buildTree();
     tree.postorder(tree.root);
-    
+
     expect(console.log.mock.calls[0][0]).toEqual(20);
     expect(console.log.mock.calls[1][0]).toEqual(35);
     expect(console.log.mock.calls[2][0]).toEqual(30);
