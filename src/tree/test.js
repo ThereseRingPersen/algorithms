@@ -20,6 +20,7 @@ describe("Node", () => {
 
     expect(n.children.length).toEqual(1);
   });
+
   test("Node can remove a child", () => {
     const n = new Node("a");
     n.add("b");
@@ -68,5 +69,28 @@ describe("Tree", () => {
     tree.traverseDepthFirst((node) => numbers.push(node.data));
 
     expect(numbers).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  test("levelwidth returns null when tree is empty", () => {
+    const tree = new Tree();
+    const widths = tree.levelWidths();
+
+    expect(widths).toEqual(null);
+  });
+
+  test("returns levelWidths when there are elements in the tree", () => {
+    const tree = new Tree();
+    tree.root = new Node(1);
+    tree.root.add(2);
+    tree.root.add(3);
+    tree.root.add(4);
+    tree.root.children[0].add(5);
+    tree.root.children[0].add(6);
+    tree.root.children[1].add(7);
+    tree.root.children[2].add(8);
+
+    const widths = tree.levelWidths();
+
+    expect(widths).toEqual([1, 3, 4]);
   });
 });

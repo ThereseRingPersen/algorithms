@@ -34,6 +34,26 @@ class Tree {
       cb(node);
     }
   }
+
+  levelWidths() {
+    if (this.root === null) {
+      return null;
+    }
+    const widths = [0];
+    const nodesList = [this.root, null];
+
+    while (nodesList.length > 1) {
+      const node = nodesList.shift();
+      if (node === null) {
+        nodesList.push(null);
+        widths.push(0);
+      } else {
+        nodesList.push(...node.children);
+        widths[widths.length - 1]++;
+      }
+    }
+    return widths;
+  }
 }
 
 module.exports = { Node, Tree };
