@@ -20,10 +20,25 @@ describe("Tree insert", () => {
     const tree = new Tree();
     expect(tree.root).toEqual(null);
   });
+
   test("Tree can insert a node", () => {
     const tree = new Tree();
     tree.insert("a");
     expect(tree.root.data).toEqual("a");
+  });
+});
+
+describe("Tree find.", () => {
+  test("Returns node when it exists.", () => {
+    const tree = buildTree();
+    const node = tree.find(40);
+    expect(node.data).toEqual(40);
+  });
+
+  test("Returns null when the value does not exist.", () => {
+    const tree = buildTree();
+    const node = tree.find(12);
+    expect(node).toEqual(null);
   });
 });
 
@@ -32,6 +47,7 @@ describe("Tree remove", () => {
     const tree = new Tree();
     expect(tree.root).toEqual(null);
   });
+
   test("Can remove a node with two children from a tree", () => {
     const tree = new Tree();
     tree.insert(40);
@@ -49,6 +65,7 @@ describe("Tree remove", () => {
     expect(tree.root.right.right.left.data).toEqual(70);
     expect(tree.root.right.right.right).toEqual(null);
   });
+
   test("Can remove a leafnode from a tree", () => {
     const tree = new Tree();
     tree.insert(40);
@@ -56,6 +73,7 @@ describe("Tree remove", () => {
     tree.remove(60);
     expect(tree.root.right).toEqual(null);
   });
+
   test("Can remove a node with one right child from a tree", () => {
     const tree = new Tree();
     tree.insert(40);
@@ -85,6 +103,7 @@ describe("Tree traveral", () => {
   afterEach(() => {
     console.log.mockRestore();
   });
+
   test("Inorder traversal", () => {
     const tree = buildTree();
     tree.inorder(tree.root);

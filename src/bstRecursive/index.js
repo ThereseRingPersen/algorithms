@@ -35,6 +35,7 @@ class Tree {
   remove(data) {
     this.root = this.removeNode(this.root, data);
   }
+
   removeNode(node, data) {
     if (node === null) {
       return null;
@@ -57,11 +58,26 @@ class Tree {
     }
     return node;
   }
+
   findMinNode(node) {
     if (node.left === null) {
       return node;
     } else {
       return this.findMinNode(node.left);
+    }
+  }
+  find(data) {
+    return this.findNode(this.root, data);
+  }
+  findNode(node, data) {
+    if (node === null) {
+      return null;
+    } else if (node.data === data) {
+      return node;
+    } else if (node.data > data) {
+      return this.findNode(node.left, data);
+    } else if (node.data < data) {
+      return this.findNode(node.right, data);
     }
   }
   preorder(node) {
